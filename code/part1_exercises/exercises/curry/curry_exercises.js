@@ -44,7 +44,7 @@ var slice = _.curry((start, n, list) => list.slice(start, n));
 // ============
 // Use slice to define a function "take" that returns n elements from the beginning of an array. Make it curried.
 // For ['a', 'b', 'c'] with n=2 it should return ['a', 'b']
-var take = undefined;
+var take = slice(0);
 
 
 module.exports = { words: words,
