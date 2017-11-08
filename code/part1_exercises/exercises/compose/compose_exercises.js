@@ -15,14 +15,12 @@ var CARS = [
 // Exercise 1:
 // ============
 // use _.compose() to rewrite the function below. Hint: _.prop() is curried.
-var isLastInStock = _.pipe(
-                          _.last,
-                          _.prop('in_stock'));
+var isLastInStock = _.compose(_.prop('in_stock'), _.last);
   
 // Exercise 2:
 // ============
 // use _.compose(), _.prop() and _.head() to retrieve the name of the first car
-var nameOfFirstCar = undefined;
+var nameOfFirstCar = _.compose(_.prop('name'), _.head);
 
 
 // Exercise 3:
