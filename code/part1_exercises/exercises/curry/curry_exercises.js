@@ -30,11 +30,7 @@ var filterQs = _.filter(_.test(/q/i));
 var _keepHighest = function(x,y){ return x >= y ? x : y; };
 
 // REFACTOR THIS ONE:
-var max = function(xs) {
-  return reduce(function(acc, x){
-    return _keepHighest(acc, x);
-  }, -Infinity, xs);
-};
+var max = _.reduce(_keepHighest, -Infinity);
 
   
 // Bonus 1:
