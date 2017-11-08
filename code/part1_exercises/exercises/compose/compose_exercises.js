@@ -1,7 +1,13 @@
 require('../../support');
 var _ = require('ramda');
 var accounting = require('accounting');
-  
+
+const log = (...tags) => x => {
+  console.log(...tags, x);
+  return x;
+};
+
+
 // Example Data
 var CARS = [
     {name: "Ferrari FF", horsepower: 660, dollar_value: 700000, in_stock: true},
@@ -34,22 +40,27 @@ var averageDollarValue = _.compose(_average, _.map(_.prop('dollar_value')));
 // ============
 // Write a function: sanitizeNames() using compose that takes an array of cars and returns a list of lowercase and underscored names: e.g: sanitizeNames([{name: "Ferrari FF"}]) //=> ["ferrari_ff"].
 
-var _underscore = replace(/\W+/g, '_'); //<-- leave this alone and use to sanitize
+var _underscore = _.replace(/\W+/g, '_'); //<-- leave this alone and use to sanitize
 
-var sanitizeNames = undefined;
+var sanitizeNames = _.map(
+                        _.pipe(
+                            _.prop('name'),
+                            _.toLower,
+                            _underscore));
 
 
 // Bonus 1:
 // ============
 // Refactor availablePrices with compose.
 
-var availablePrices = function(cars) {
-  var available_cars = _.filter(_.prop('in_stock'), cars);
-  return available_cars.map(function(x){
-    return accounting.formatMoney(x.dollar_value)
-  }).join(', ');
-};
-
+var availablePrices = _.pipe(
+                        _.filter(_.prop('in_stock')),
+                        _.map(
+                            _.pipe(
+                                _.prop('dollar_value'),
+                                accounting.formatMoney)),
+                        _.join(', '));
+  
 
 // Bonus 2:
 // ============
