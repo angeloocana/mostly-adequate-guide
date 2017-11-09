@@ -26,7 +26,7 @@ var safeProp = _.curry(function (x, o) { return Maybe.of(o[x]); });
 
 var user = { id: 2, name: "Albert" };
 
-var ex3 = undefined;
+var ex3 = _.compose(_.map(_.head), safeProp('name'));
 
 
 
@@ -34,12 +34,8 @@ var ex3 = undefined;
 // ==========
 // Use Maybe to rewrite ex4 without an if statement
 
-var ex4 = function (n) {
-  if (n) { return parseInt(n); }
-};
-
-var ex4 = undefined;
-
+var ex4 = _.compose(_.map(parseInt), Maybe.of);
+  
 
 
 // Exercise 5
