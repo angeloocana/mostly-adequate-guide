@@ -75,7 +75,7 @@ var ex6 = _.compose(_.map(showWelcome), checkActive);
 // Write a validation function that checks for a length > 3. It should return Right(x) if it is greater than 3 and Left("You need > 3") otherwise
 
 var ex7 = function(x) {
-  return undefined; // <--- write me. (don't be pointfree)
+  return _.length(x) > 3 ? Right.of(x) : Left.of('You need > 3');
 };
 
 
