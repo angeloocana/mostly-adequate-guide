@@ -51,7 +51,8 @@ var getPost = function (i) {
   });
 };
 
-var ex5 = undefined;
+var upperCaseTitle = _.compose(_.toUpper, _.prop('title'));
+var ex5 = _.compose(_.map(upperCaseTitle), getPost);
 
 
 
