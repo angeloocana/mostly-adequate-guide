@@ -91,6 +91,6 @@ var save = function(x) {
   });
 };
 
-var ex8 = undefined;
+var ex8 = _.compose(either(IO.of, save), ex7);
 
 module.exports = {ex1: ex1, ex2: ex2, ex3: ex3, ex4: ex4, ex5: ex5, ex6: ex6, ex7: ex7, ex8: ex8};
