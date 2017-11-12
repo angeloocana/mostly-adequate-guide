@@ -7,6 +7,8 @@ const log = tag => x => {
   return x;
 };
 
+const mlog = tag => _.map(log(tag));
+
 // Exercise 1
 // ==========
 // Use safeProp and map/join or chain to safely get the street name when given a user
@@ -43,7 +45,11 @@ var pureLog = function(x) {
   });
 }
 
-var ex2 = undefined;
+const safeSplit = _.curry((splitWith, o) => Maybe.of(_.split(splitWith, o)));
+
+const getFileName = _.compose(_.map(_.last), safeSplit('/'));
+
+var ex2 = _.compose(_.chain(pureLog), _.chain(getFileName), getFile);
 
 
 
