@@ -2,6 +2,11 @@ require('../../support');
 var Task = require('data.task');
 var _ = require('ramda');
 
+const log = tag => x => {
+  console.log(tag, x);
+  return x;
+};
+
 // Exercise 1
 // ==========
 // Use safeProp and map/join or chain to safely get the street name when given a user
@@ -18,7 +23,9 @@ var user = {
   }
 };
 
-var ex1 = undefined;
+var getStreetName = _.compose(_.chain(safeProp('name')), safeProp('street'));
+
+var ex1 = _.compose(_.chain(getStreetName),safeProp('address'));
 
 
 // Exercise 2

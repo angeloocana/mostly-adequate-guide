@@ -3,6 +3,11 @@ var _ = require('ramda');
 var Task = require('data.task');
 var curry = _.curry;
 
+log = tag => x => {
+  console.log(tag, x);
+  return x;
+};
+
 inspect = function(x) {
   return (x && x.inspect) ? x.inspect() : x;
 };
