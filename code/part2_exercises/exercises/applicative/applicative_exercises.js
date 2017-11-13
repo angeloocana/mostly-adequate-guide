@@ -13,7 +13,7 @@ var localStorage = {};
 
 //  ex1 :: Number -> Number -> Maybe Number
 var ex1 = function(x, y) {
-  // write me
+    return Maybe.of(add).ap(Maybe.of(x)).ap(Maybe.of(y));  
 };
 
 
