@@ -73,7 +73,12 @@ var getComments = function(i) {
   });
 }
 
-var ex3 = undefined;
+var ex3 = _.pipe(
+    getPost,
+    _.chain(
+        _.pipe(
+            _.prop('id'),
+            getComments)));
 
 
 // Exercise 4
