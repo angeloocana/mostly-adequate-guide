@@ -33,7 +33,7 @@ var makeComments = _.reduce(function(acc, c){ return acc+"<li>"+c+"</li>" }, "")
 var render = _.curry(function(p, cs) { return "<div>"+p.title+"</div>"+makeComments(cs); });
 
 //  ex3 :: Task Error HTML
-var ex3 = undefined;
+var ex3 = liftA2(render, getPost(1), getComments(1));
 
 
 
