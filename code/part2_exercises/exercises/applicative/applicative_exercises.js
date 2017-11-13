@@ -22,7 +22,7 @@ var ex1 = function(x, y) {
 // Now write a function that takes 2 Maybe's and adds them. Use liftA2 instead of ap().
 
 //  ex2 :: Maybe Number -> Maybe Number -> Maybe Number
-var ex2 = undefined;
+var ex2 = (x, y) => liftA2(add, x, y);
 
 
 
